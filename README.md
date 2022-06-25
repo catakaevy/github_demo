@@ -130,6 +130,31 @@ git status<br>
 Interestingly, git will automatically create .orig file after resolving conflicts to backup! Therefore, lots of people add "*.orig" in .gitignore<br>
 <br>
 
+### how to rebase<br>
+#### Normal case1(rebase from above_branch): fundamental reasone we use this is for when we want to continue developing (like creating codes) at proceeding branch but some changes happen to main or branch above your developing branch. Example below.<br>
+git checkout -b your_dev_branch<br>
+-- keep commiting and want to continue tasks here<br>
+-- but someone edited and commited branch above your_dev_branch directly<br>
+-- in this case, you should use them<br>
+git rebase main (above_branch)<br>
+#### Rebase Conflicts(if you want to leave rebase mode)<br>
+git rebase --abort<br>
+#### Rebase Conflicts(if you want to fix conflicts)<br>
+git rebase main<br>
+git mergetool<br>
+(git add file_name)<br>
+git rebase --continue<br>
+(git rebase --skip)<br>
+git log --oneline --graph --decorate --all<br>
+#### Rebase remote branches<br>
+-- publish commiting at local<br>
+-- publish commiting at remote<br>
+git fetch origin main : you need to update remote status at local git<br>
+git status<br>
+=> will say "Your branch and 'origin/main' have diverged<br>
+git pull --rebase origin main<br>
+<br>
+
 ### git config_file<br>
 .gitconfig is our config file for git setting<br>
 my commands for git alias setting lists below<br>
