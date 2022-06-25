@@ -79,17 +79,61 @@ git difftool --staged<br>
 git diff -- (path)file_name<br>
 git difftool -- (path)file_name<br>
 #### compare commits<br>
-git diff commit_id commit_other_id (HEAD: latest commit)<br>
-git difftool commit_id commit_other_id (HEAD: latest commit)<br>
+git diff commit_id commit_other_id <br>
+git difftool commit_id commit_other_id (HEAD: latest commit on the current branch)<br>
 #### compare local repo vs remote repo<br>
 git diff local_branch_name origin/remote_branch_name<br>
 git difftool local_branch_name origin/remote_branch_name (origin: refer to remote)<br>
+#### compare local repo1 vs local repo2<br>
+git diff local_branch1 local_branch2<br>
+git difftool local_branch1 local_branch2<br>
+<br>
+
+### Branch <br>
+#### show all branch(includes remote branches)<br>
+git branch -a<br>
+#### create new branch<br>
+git branch new_branch_name<br>
+#### change the current branch<br>
+git checkout your_branch<br>
+### change branch name<br>
+git branch -m branch_name new_branch_name<br>
+### delete branch<br>
+git branch -d branch_name (not allowed when you are there)<br>
+### create new branch and mv at the same time<br>
+git checkout -b branch_name<br>
+<br>
+
+### Merge<br>
+#### Fast Forward Branch Merge: only works when target branch does not have any changes from your current branch<br>
+After commiting--<br>
+git checkout main_branch<br>
+git merge target_branch<br>
+git log --oneline --decorate --graph : check if the current commit points target_branch & merged_branch<br>
+#### None Fast Forward Branch Merge: commits in target_branch will be different but merge_branch will integrate and merge all commits at the same time<br>
+After commitng--<br>
+git checkout main_branch<br>
+git merge target_branch --no-ff<br>
+git log --oneline --decorate --graph : check if the current commit integrates all commits in merge_branch<br>
+#### Automatic Merge: <br>
+After commiting at target_branch--<br>
+After different commiting at main_branch--<br>
+git merge target_branch : eventually main_branch will merge unless merge does not have conflicts (changes in same files) because main is always prioritized<br>
+#### Conflict Merge Resolution: when conflict happens is when multipul branches have different changes at the same time<br>
+After commiting changes for file1 at target_branch--<br>
+After commiting changes for file1 at main_branch--<br>
+git checkout main<br>
+git merge target_branch : Conflicts happens => how to resolve below<br>
+git mergetool: pick up the choices you have and save<br>
+git commit -m "Resolved Merge conflicts"<br>
+git status<br>
+Interestingly, git will automatically create .orig file after resolving conflicts to backup! Therefore, lots of people add "*.orig" in .gitignore<br>
 <br>
 
 ### git config_file<br>
 .gitconfig is our config file for git setting<br>
 my commands for git alias setting lists below<br>
-
+<br>
 git config --global alias.ss status<br>
 git config --global alias.br branch<br>
 git config --global alias.brm "branch -m"<br>
@@ -111,6 +155,7 @@ git config --global alias.hist "log --oneline --graph --decorate --all"<br>
 git config --global alias.logn "log --name-status --oneline"<br>
 git config --global alias.firstcom "commit --allow-empty -m \"Initial commit\""<br>
 git config --global alias.dtool "difftool"<br>
+git config --global alias.mtool "mergetool"<br>
 <br>
 
 ### memo<br>
