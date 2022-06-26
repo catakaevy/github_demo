@@ -196,7 +196,7 @@ git stash apply stash@{stack_num} : you can stash apply for specific stash<br>
 git stash clear : you can stash all stash_lists at the same time<br>
 #### Stashing into Branches: when you avoid commiting current changes on main or your current branches<br>
 -- a bit messed up changes (like staged:1 tracked_file:2 Untracked_file:1 on main) and you want to avoid commiting at main branch<br>
-git stash save -u<br>
+git stash save -u: stash branch commands requires existing stash beforehand<br>
 git stash branch new_branch_name<br>
 
 ### how to tag in git<br>
