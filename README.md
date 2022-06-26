@@ -228,7 +228,14 @@ git push origin target_branch --tags<br>
 -- want to delete tags after pushing remote repo<br>
 git push origin :tag_name<br>
 
-
+### Reset & Reflog & Revert : Unfortunately, teacher does not explain well here<br>
+#### Reset soft: when you commited mistakingly in local<br>
+git reset HEAD^(num): only undo the commit and it is more like your state will be movable to specific commit but in the staged area and local workdir do not have any changes<br>
+git reset reflog_style(HEAD@num)<br>
+#### Revert: when you pushed commit mistakingly in remote<br>
+git revert commit_id<br>
+#### Reflog<br>
+git reflog : show logs of everything we've done including HEAD changes of resets or anything like that<br>
 
 
 
@@ -268,6 +275,7 @@ git config --global alias.log3 "log -3"<br>
 git config --global alias.logo "log --oneline"<br>
 git config --global alias.hist "log --oneline --graph --decorate --all"<br>
 git config --global alias.logn "log --name-status --oneline"<br>
+git config --global alias.rl reflog<br>
 git config --global alias.firstcom "commit --allow-empty -m \"Initial commit\""<br>
 git config --global alias.dtool "difftool"<br>
 git config --global alias.mtool "mergetool"<br>
