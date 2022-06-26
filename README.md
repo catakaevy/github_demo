@@ -155,11 +155,58 @@ git status<br>
 git pull --rebase origin main<br>
 <br>
 
+### how to stash<br>
+#### Normal case (when you are not ready to commit your changes in the current state and allow you to change gear and work on something else)<br>
+-- modified file 1<br>
+git stash (save)<br>
+git status<br>
+=> your modified untracked file is gone<br>
+-- modified another file but you want to get back the stash state above 2<br>
+git stash apply : this allow you to go back the state including the second modifications you saved with stash commands and see status too<br>
+-- modified adding changes to modification1 and complete<br>
+git commit<br>
+git stash list : list all stash you saved in git<br>
+git stash drop : you can drop the last unneccesary stash record after applying<br>
+#### Stash Untracked / Pop<br>
+git ls-files<br>
+-- modification tracking_file.txt in ls-files<br>
+vim non-trackedfile.txt<br>
+git status<br>
+=> shows modified state tracking_file.txt & Untracked files state, non-trackedfile.txt<br>
+git stash<br>
+=> only works for tracking_file.txt<br>
+-- clean up stash<br>
+git stash list<br>
+git stash drop<br>
+-- but you want to stash including Untracked files<br>
+git stash -u : you can stash Ubntracked files too excluding files specified in .gitignore<br>
+-- another new modification<br>
+git stash pop: integrated commands (git stash apply & drop)<br>
+#### Multiple Stashes<br>
+-- if you want to stash several times, you should use this commands to identify each stashes well<br>
+git stash save "Message"<br>
+git stash list<br>
+git show stash@{stack_num} : you can see what the chosen stash is<br>
+git stash apply stash@{stack_num} : you can stash apply for specific stash<br>
+git stash clear : you can stash all stash_lists at the same time<br>
+#### Stashing into Branches: when you avoid commiting current changes on main or your current branches<br>
+-- a bit messed up changes (like staged:1 tracked_file:2 Untracked_file:1 on main) and you want to avoid commiting at main branch<br>
+git stash save -u<br>
+git stash branch new_branch_name<br>
+
 ### git config_file<br>
 .gitconfig is our config file for git setting<br>
 my commands for git alias setting lists below<br>
 <br>
 git config --global alias.ss status<br>
+git config --global alias.ls ls-files<br>
+git config --global alias.sh stash<br>
+git config --global alias.shls "stash list"<br>
+git config --global alias.shap "stash apply"<br>
+git config --global alias.shp "stash pop"<br>
+git config --global alias.shd "stash drop"<br>
+git config --global alias.shcl "stash clear"<br>
+git config --global alias.shbr "stash branch"<br>
 git config --global alias.br branch<br>
 git config --global alias.brm "branch -m"<br>
 git config --global alias.brd "branch -d"<br>
