@@ -42,7 +42,7 @@ mv file_name new_file_name<br>
 git add -A : you need to use -A option since add command only track new file and ignore deleted old_file status<br>
 #### if you rename by GUI operations<br>
 git add new_file_name (: better to avoing using git add -A because your methods(GUI) will be remained or you can add the string to .gitignore)<br>
-git add -u (: to make sure git understand we are just renaming file)<br>
+git add -u (: to make sure git understand we are just renaming file, changed_file)<br>
 
 ### how to delete files in git<br>
 #### if you haven't add file at staged area<br>
