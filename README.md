@@ -268,6 +268,7 @@ git config --global alias.com commit<br>
 git config --global alias.coma "commit --amend"<br>
 git config --global alias.mg "merge --no-ff"<br>
 git config --global alias.mgff "merge --ff"<br>
+git config --global alias.rest restore<br>
 git config --global alias.cp cherry-pick<br>
 git config --global alias.log1 "log -1"<br>
 git config --global alias.log2 "log -2"<br>
