@@ -30,6 +30,11 @@ git reset HEAD file_name<br>
 git restore file_name (or checkout file_name)<br>
 <br>
 
+### Commit message fix<br>
+git commit<br>
+git commit --amend<br>
+-- reopen and compose commit message again<br>
+
 ### how to rename filename and moving file in git<br>
 git mv file_name new_file_name<br>
 #### if you use bash mv commands<br>
@@ -194,6 +199,39 @@ git stash clear : you can stash all stash_lists at the same time<br>
 git stash save -u<br>
 git stash branch new_branch_name<br>
 
+### how to tag in git<br>
+#### Lightweigh: tag allows us to refer specific commits<br>
+git tag tag_name : Creating tag at latest commit<br>
+git tag --list : show list of tag<br>
+git show tag_name : works with tag_name commit<br>
+git tag --delete tag_name : delete tag_name tag<br>
+#### Annotated tags: Lightweigh tag + extra info(messages)<br>
+git tag -a tag_name (or git tag tag_name -m "Message")<br>
+-- open editor to add messages for this tag<br>
+git tag --list<br>
+git log --oneline --decorate --graph --all => same as Lightweight<br>
+git show tag_name => you can see the message<br>
+#### Comparision between tags<br>
+git diff tag_name1 tag_name2<br>
+git difftool tag_name1 tag_name2<br>
+#### Taggin Previous Commits<br>
+git log --oneline --decorate --graph --all<br>
+-- copy commit_id<br>
+git tag -a tag_name commit_id <br>
+#### Update Tagging (for same tag_name)<br>
+git tag -a same_tag_name -f commit_id<br>
+#### Using Tag with Github<br>
+git push origin target_branch tag_name<br>
+-- In Github we can see at Releases (tags) and you can download zip or tar.gz file at that commit sources<br>
+-- want to push all tags at one time in remote repo<br>
+git push origin target_branch --tags<br>
+-- want to delete tags after pushing remote repo<br>
+git push origin :tag_name<br>
+
+
+
+
+
 ### git config_file<br>
 .gitconfig is our config file for git setting<br>
 my commands for git alias setting lists below<br>
@@ -207,6 +245,10 @@ git config --global alias.shp "stash pop"<br>
 git config --global alias.shd "stash drop"<br>
 git config --global alias.shcl "stash clear"<br>
 git config --global alias.shbr "stash branch"<br>
+git config --global alias.tg tag<br>
+git config --global alias.tga "tag -a"<br>
+git config --global alias.tgls "tag --list"<br>
+git config --global alias.tgd "tag --delete"<br>
 git config --global alias.br branch<br>
 git config --global alias.brm "branch -m"<br>
 git config --global alias.brd "branch -d"<br>
@@ -216,6 +258,7 @@ git config --global alias.cob "checkout -b"<br>
 git config --global alias.adu "add -u"<br>
 git config --global alias.adup "add -u -p"<br>
 git config --global alias.com commit<br>
+git config --global alias.coma "commit --amend"<br>
 git config --global alias.mg "merge --no-ff"<br>
 git config --global alias.mgff "merge --ff"<br>
 git config --global alias.cp cherry-pick<br>
