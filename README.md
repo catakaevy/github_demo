@@ -257,6 +257,7 @@ git config --global alias.tga "tag -a"<br>
 git config --global alias.tgls "tag --list"<br>
 git config --global alias.tgd "tag --delete"<br>
 git config --global alias.br branch<br>
+git config --global alias.bra "branch -a"<br>
 git config --global alias.brm "branch -m"<br>
 git config --global alias.brd "branch -d"<br>
 git config --global alias.brdd "branch -D"<br>
